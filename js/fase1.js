@@ -32,8 +32,8 @@ game.appendChild(timer);
   let x = 100;
   let y = 100;
 
-  let vx = 6;
-  let vy = 6;
+  let vx = 18;
+  let vy = 18;
 
   let moving = true;
 
