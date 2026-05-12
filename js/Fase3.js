@@ -29,6 +29,9 @@ function startPhase3(){
   let py =
     window.innerHeight - 200;
 
+px = window.innerWidth / 2;
+py = window.innerHeight * 0.7;
+  
   player.style.left =
     px + "px";
 
