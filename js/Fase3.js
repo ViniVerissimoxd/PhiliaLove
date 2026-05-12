@@ -63,6 +63,37 @@ function startPhase3(){
       obstacle.style.top =
         y + "px";
 
+      const r1 =
+  obstacle.getBoundingClientRect();
+
+const r2 =
+  player.getBoundingClientRect();
+
+if(
+  r1.left < r2.right &&
+  r1.right > r2.left &&
+  r1.top < r2.bottom &&
+  r1.bottom > r2.top
+){
+
+  obstacle.remove();
+
+  progress--;
+
+  if(progress < 0){
+    progress = 0;
+  }
+
+  player.style.filter =
+    `grayscale(${100 - progress * 10}%)
+     drop-shadow(0 0 ${progress * 3}px lime)`;
+
+  player.style.transform =
+    `scale(${1 + progress/20})`;
+
+  return;
+}
+
       if(y < window.innerHeight){
 
         requestAnimationFrame(
@@ -124,10 +155,11 @@ function startPhase3(){
         progress++;
 
         player.style.filter =
-          `drop-shadow(0 0 ${progress * 3}px lime)`;
+  `grayscale(${100 - progress * 10}%)
+   drop-shadow(0 0 ${progress * 3}px lime)`;
 
-        player.style.transform =
-          `scale(${1 + progress/20})`;
+player.style.transform =
+  `scale(${1 + progress/20})`;
 
         if(progress >= 10){
 
