@@ -62,13 +62,12 @@ function startPhase2(){
       const size =
         small.offsetWidth;
 
-      if(
-        !dragging &&
-        !small.dataset.done
-      ){
+      if(!dragging){
 
         x += vx;
         y += vy;
+
+        /* BORDAS */
 
         if(
           x <= 0 ||
@@ -82,6 +81,33 @@ function startPhase2(){
           y + size >= window.innerHeight
         ){
           vy *= -1;
+        }
+
+        /* COLISÃO COM CORAÇÃO GRANDE */
+
+        const futureRect = {
+
+          left:x,
+          right:x + size,
+          top:y,
+          bottom:y + size
+        };
+
+        const bigRect =
+          big.getBoundingClientRect();
+
+        if(
+          futureRect.left < bigRect.right &&
+          futureRect.right > bigRect.left &&
+          futureRect.top < bigRect.bottom &&
+          futureRect.bottom > bigRect.top
+        ){
+
+          vx *= -1;
+          vy *= -1;
+
+          x += vx * 2;
+          y += vy * 2;
         }
 
         small.style.left =
@@ -104,10 +130,6 @@ function startPhase2(){
 
         e.preventDefault();
 
-        if(small.dataset.done){
-          return;
-        }
-
         dragging = true;
       },
       { passive:false }
@@ -118,10 +140,6 @@ function startPhase2(){
       e => {
 
         e.preventDefault();
-
-        if(small.dataset.done){
-          return;
-        }
 
         const t =
           e.touches[0];
@@ -148,44 +166,7 @@ function startPhase2(){
           r1.bottom > r2.top
         ){
 
-          dragging = false;
-
-          small.dataset.done =
-            "true";
-
-          vx = 0;
-          vy = 0;
-
-          const angle =
-            Math.random() *
-            Math.PI * 2;
-
-          const radius = 80;
-
-          const centerX =
-            window.innerWidth / 2;
-
-          const centerY =
-            window.innerHeight / 2;
-
-          x =
-            centerX +
-            Math.cos(angle) *
-            radius;
-
-          y =
-            centerY +
-            Math.sin(angle) *
-            radius;
-
-          small.style.left =
-            x + "px";
-
-          small.style.top =
-            y + "px";
-
-          small.style.pointerEvents =
-            "none";
+          small.remove();
 
           collected++;
 
