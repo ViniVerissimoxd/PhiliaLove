@@ -250,3 +250,28 @@ body{
 
   opacity:.9;
 }
+
+#gameContainer{
+  position:relative;
+  width:100vw;
+  height:100vh;
+  overflow:hidden;
+  background:black;
+}
+
+/* jogador */
+#playerHeart{
+  position:absolute;
+  font-size:60px;
+  left:50%;
+  top:70%;
+  transform:translate(-50%,-50%);
+  z-index:10;
+}
+
+/* objetos */
+.obstacle,
+.broccoli{
+  position:absolute;
+  font-size:45px;
+}
