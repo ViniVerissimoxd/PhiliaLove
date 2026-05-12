@@ -31,7 +31,7 @@ big.src =
     small.className =
       "small-heart";
 
-    small.innerHTML = "❤️";
+    small.innerHTML = "🎨";
 
     game.appendChild(small);
 
