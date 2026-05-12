@@ -134,59 +134,64 @@ let vy =
           big.getBoundingClientRect();
 
         if(
-          r1.left < r2.right &&
-          r1.right > r2.left &&
-          r1.top < r2.bottom &&
-          r1.bottom > r2.top
-        ){
+  r1.left < r2.right &&
+  r1.right > r2.left &&
+  r1.top < r2.bottom &&
+  r1.bottom > r2.top
+){
 
-          dragging = false;
+  dragging = false;
 
-small.style.position = "absolute";
+  small.dataset.done = "true";
 
-const angle =
-  Math.random() * Math.PI * 2;
+  const angle =
+    Math.random() * Math.PI * 2;
 
-const radius = 70;
+  const radius = 80;
 
-const centerX =
-  window.innerWidth / 2;
+  const centerX =
+    window.innerWidth / 2;
 
-const centerY =
-  window.innerHeight / 2;
+  const centerY =
+    window.innerHeight / 2;
 
-small.style.left =
-  (centerX + Math.cos(angle) * radius)
-  + "px";
+  small.style.left =
+    (centerX + Math.cos(angle) * radius)
+    + "px";
 
-small.style.top =
-  (centerY + Math.sin(angle) * radius)
-  + "px";
+  small.style.top =
+    (centerY + Math.sin(angle) * radius)
+    + "px";
 
-small.style.pointerEvents =
-  "none";
+  small.style.pointerEvents =
+    "none";
 
-collected++;
+  vx = 0;
+  vy = 0;
 
-big.innerHTML = "❤️";
+  collected++;
 
-big.style.opacity =
-  0.2 + (collected / 10);
+  big.innerHTML = "❤️";
 
-          if(collected >= 10){
+  big.style.opacity =
+    0.2 + (collected / 10);
 
-            sessionStorage.setItem(
-              "heart_2",
-              "true"
-            );
+  if(collected >= 10){
 
-            big.remove();
+    sessionStorage.setItem(
+      "heart_2",
+      "true"
+    );
 
-            back.style.display =
-              "block";
-          }
+    big.remove();
+
+    back.style.display =
+      "block";
+  }
+
+  return;
         }
-      },
+      
       { passive:false }
     );
 
