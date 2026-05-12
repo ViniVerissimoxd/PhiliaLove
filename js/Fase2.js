@@ -99,6 +99,10 @@ let vy =
       "touchstart",
       e => {
 
+        if(small.dataset.done){
+  return;
+        }
+
         e.preventDefault();
 
         dragging = true;
