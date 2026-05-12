@@ -13,8 +13,7 @@ function startPhase3(){
   const player =
     document.createElement("div");
 
-  player.className =
-    "player-heart";
+  player.id = "playerHeart";
 
   player.innerHTML = "❤️";
 
@@ -22,17 +21,42 @@ function startPhase3(){
 
   let progress = 0;
 
+  let px =
+    window.innerWidth / 2;
+
+  let py =
+    window.innerHeight - 200;
+
+  player.style.left =
+    px + "px";
+
+  player.style.top =
+    py + "px";
+
+  /* MOVER */
+
   player.addEventListener(
     "touchmove",
     e => {
 
+      e.preventDefault();
+
       const t =
         e.touches[0];
 
+      px = t.clientX - 30;
+      py = t.clientY - 30;
+
       player.style.left =
-        t.clientX + "px";
-    }
+        px + "px";
+
+      player.style.top =
+        py + "px";
+    },
+    { passive:false }
   );
+
+  /* OBSTÁCULOS */
 
   setInterval(() => {
 
@@ -42,19 +66,18 @@ function startPhase3(){
     obstacle.className =
       "obstacle";
 
-    obstacle.innerHTML =
-      "🖤";
-
-    obstacle.style.left =
-      Math.random() *
-      window.innerWidth + "px";
-
-    obstacle.style.top =
-      "-100px";
+    obstacle.innerHTML = "🖤";
 
     game.appendChild(obstacle);
 
-    let y = -100;
+    let x =
+      Math.random() *
+      (window.innerWidth - 50);
+
+    let y = -50;
+
+    obstacle.style.left =
+      x + "px";
 
     function fall(){
 
@@ -64,80 +87,7 @@ function startPhase3(){
         y + "px";
 
       const r1 =
-  obstacle.getBoundingClientRect();
-
-const r2 =
-  player.getBoundingClientRect();
-
-if(
-  r1.left < r2.right &&
-  r1.right > r2.left &&
-  r1.top < r2.bottom &&
-  r1.bottom > r2.top
-){
-
-  obstacle.remove();
-
-  progress--;
-
-  if(progress < 0){
-    progress = 0;
-  }
-
-  player.style.filter =
-    grayscale(${100 - progress * 10}%);
-
-  player.style.transform =
-    `scale(${1 + progress/20})`;
-
-  return;
-}
-
-      if(y < window.innerHeight){
-
-        requestAnimationFrame(
-          fall
-        );
-      }else{
-        obstacle.remove();
-      }
-    }
-
-    fall();
-
-  },1200);
-
-  setInterval(() => {
-
-    const needle =
-      document.createElement("div");
-
-    needle.className =
-      "needle";
-
-    needle.innerHTML =
-      "🥦";
-
-    needle.style.left =
-      Math.random() *
-      window.innerWidth + "px";
-
-    needle.style.top =
-      "-100px";
-
-    game.appendChild(needle);
-
-    let y = -100;
-
-    function fall(){
-
-      y += 3;
-
-      needle.style.top =
-        y + "px";
-
-      const r1 =
-        needle.getBoundingClientRect();
+        obstacle.getBoundingClientRect();
 
       const r2 =
         player.getBoundingClientRect();
@@ -149,16 +99,95 @@ if(
         r1.bottom > r2.top
       ){
 
-        needle.remove();
+        obstacle.remove();
+
+        progress--;
+
+        if(progress < 0){
+          progress = 0;
+        }
+
+        player.style.filter =
+          `grayscale(${100 - progress * 10}%)`;
+
+        player.style.transform =
+          `scale(${1 + progress/20})`;
+
+        return;
+      }
+
+      if(y < window.innerHeight){
+
+        requestAnimationFrame(
+          fall
+        );
+
+      }else{
+
+        obstacle.remove();
+      }
+    }
+
+    fall();
+
+  },1800);
+
+  /* BRÓCOLIS */
+
+  setInterval(() => {
+
+    const broccoli =
+      document.createElement("div");
+
+    broccoli.className =
+      "broccoli";
+
+    broccoli.innerHTML = "🥦";
+
+    game.appendChild(broccoli);
+
+    let x =
+      Math.random() *
+      (window.innerWidth - 50);
+
+    let y = -50;
+
+    broccoli.style.left =
+      x + "px";
+
+    function fall(){
+
+      y += 3;
+
+      broccoli.style.top =
+        y + "px";
+
+      const r1 =
+        broccoli.getBoundingClientRect();
+
+      const r2 =
+        player.getBoundingClientRect();
+
+      if(
+        r1.left < r2.right &&
+        r1.right > r2.left &&
+        r1.top < r2.bottom &&
+        r1.bottom > r2.top
+      ){
+
+        broccoli.remove();
 
         progress++;
 
-        player.style.filter =
-  `grayscale(${100 - progress * 10}%)
-   drop-shadow(0 0 ${progress * 3}px lime)`;
+        if(progress > 10){
+          progress = 10;
+        }
 
-player.style.transform =
-  `scale(${1 + progress/20})`;
+        player.style.filter =
+          `grayscale(${100 - progress * 10}%)`;
+
+        player.style.transform =
+          `scale(${1 + progress/20})`;
 
         if(progress >= 10){
 
@@ -181,12 +210,14 @@ player.style.transform =
         requestAnimationFrame(
           fall
         );
+
       }else{
-        needle.remove();
+
+        broccoli.remove();
       }
     }
 
     fall();
 
-  },1800);
+  },2500);
 }
