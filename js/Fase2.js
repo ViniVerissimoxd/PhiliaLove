@@ -32,13 +32,66 @@ function startPhase2(){
 
     small.innerHTML = "❤️";
 
-    small.style.left =
-      Math.random()*80 + "%";
-
-    small.style.top =
-      Math.random()*80 + "%";
-
     game.appendChild(small);
+
+    let x =
+      Math.random() *
+      (window.innerWidth - 50);
+
+    let y =
+      Math.random() *
+      (window.innerHeight - 50);
+
+    let vx =
+      (Math.random() * 6) + 3;
+
+    let vy =
+      (Math.random() * 6) + 3;
+
+    let dragging = false;
+
+    function animate(){
+
+      if(!dragging){
+
+        x += vx;
+        y += vy;
+
+        if(
+          x <= 0 ||
+          x >= window.innerWidth - 40
+        ){
+          vx *= -1;
+        }
+
+        if(
+          y <= 0 ||
+          y >= window.innerHeight - 40
+        ){
+          vy *= -1;
+        }
+
+        small.style.left =
+          x + "px";
+
+        small.style.top =
+          y + "px";
+      }
+
+      requestAnimationFrame(
+        animate
+      );
+    }
+
+    animate();
+
+    small.addEventListener(
+      "touchstart",
+      () => {
+
+        dragging = true;
+      }
+    );
 
     small.addEventListener(
       "touchmove",
@@ -47,11 +100,14 @@ function startPhase2(){
         const t =
           e.touches[0];
 
+        x = t.clientX;
+        y = t.clientY;
+
         small.style.left =
-          t.clientX + "px";
+          x + "px";
 
         small.style.top =
-          t.clientY + "px";
+          y + "px";
 
         const r1 =
           small.getBoundingClientRect();
@@ -82,10 +138,20 @@ function startPhase2(){
               "true"
             );
 
+            big.remove();
+
             back.style.display =
               "block";
           }
         }
+      }
+    );
+
+    small.addEventListener(
+      "touchend",
+      () => {
+
+        dragging = false;
       }
     );
   }
