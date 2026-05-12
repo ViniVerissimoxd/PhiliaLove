@@ -43,17 +43,17 @@ function startPhase2(){
       (window.innerHeight - 60);
 
     let speed =
-  (Math.random() * 10) + 2;
+      (Math.random() * 8) + 2;
 
-let vx =
-  Math.random() > 0.5
-  ? speed
-  : -speed;
+    let vx =
+      Math.random() > 0.5
+      ? speed
+      : -speed;
 
-let vy =
-  Math.random() > 0.5
-  ? speed
-  : -speed;
+    let vy =
+      Math.random() > 0.5
+      ? speed
+      : -speed;
 
     let dragging = false;
 
@@ -62,7 +62,10 @@ let vy =
       const size =
         small.offsetWidth;
 
-      if(!dragging){
+      if(
+        !dragging &&
+        !small.dataset.done
+      ){
 
         x += vx;
         y += vy;
@@ -99,11 +102,11 @@ let vy =
       "touchstart",
       e => {
 
-        if(small.dataset.done){
-  return;
-        }
-
         e.preventDefault();
+
+        if(small.dataset.done){
+          return;
+        }
 
         dragging = true;
       },
@@ -116,14 +119,15 @@ let vy =
 
         e.preventDefault();
 
+        if(small.dataset.done){
+          return;
+        }
+
         const t =
           e.touches[0];
 
-        x =
-          t.clientX - 20;
-
-        y =
-          t.clientY - 20;
+        x = t.clientX - 20;
+        y = t.clientY - 20;
 
         small.style.left =
           x + "px";
@@ -138,64 +142,72 @@ let vy =
           big.getBoundingClientRect();
 
         if(
-  r1.left < r2.right &&
-  r1.right > r2.left &&
-  r1.top < r2.bottom &&
-  r1.bottom > r2.top
-){
+          r1.left < r2.right &&
+          r1.right > r2.left &&
+          r1.top < r2.bottom &&
+          r1.bottom > r2.top
+        ){
 
-  dragging = false;
+          dragging = false;
 
-  small.dataset.done = "true";
+          small.dataset.done =
+            "true";
 
-  const angle =
-    Math.random() * Math.PI * 2;
+          vx = 0;
+          vy = 0;
 
-  const radius = 80;
+          const angle =
+            Math.random() *
+            Math.PI * 2;
 
-  const centerX =
-    window.innerWidth / 2;
+          const radius = 80;
 
-  const centerY =
-    window.innerHeight / 2;
+          const centerX =
+            window.innerWidth / 2;
 
-  small.style.left =
-    (centerX + Math.cos(angle) * radius)
-    + "px";
+          const centerY =
+            window.innerHeight / 2;
 
-  small.style.top =
-    (centerY + Math.sin(angle) * radius)
-    + "px";
+          x =
+            centerX +
+            Math.cos(angle) *
+            radius;
 
-  small.style.pointerEvents =
-    "none";
+          y =
+            centerY +
+            Math.sin(angle) *
+            radius;
 
-  vx = 0;
-  vy = 0;
+          small.style.left =
+            x + "px";
 
-  collected++;
+          small.style.top =
+            y + "px";
 
-  big.innerHTML = "❤️";
+          small.style.pointerEvents =
+            "none";
 
-  big.style.opacity =
-    0.2 + (collected / 10);
+          collected++;
 
-  if(collected >= 10){
+          big.innerHTML = "❤️";
 
-    sessionStorage.setItem(
-      "heart_2",
-      "true"
-    );
+          big.style.opacity =
+            0.2 + (collected / 10);
 
-    big.remove();
+          if(collected >= 10){
 
-    back.style.display =
-      "block";
-  }
+            sessionStorage.setItem(
+              "heart_2",
+              "true"
+            );
 
-  return;
+            big.remove();
+
+            back.style.display =
+              "block";
+          }
         }
-      
+      },
       { passive:false }
     );
 
