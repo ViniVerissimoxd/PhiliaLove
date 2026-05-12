@@ -58,7 +58,7 @@ function startPhase3(){
 
     function fall(){
 
-      y += 6;
+      y += 4;
 
       obstacle.style.top =
         y + "px";
@@ -75,7 +75,7 @@ function startPhase3(){
 
     fall();
 
-  },700);
+  },1200);
 
   setInterval(() => {
 
@@ -101,7 +101,7 @@ function startPhase3(){
 
     function fall(){
 
-      y += 5;
+      y += 3;
 
       needle.style.top =
         y + "px";
@@ -157,5 +157,5 @@ function startPhase3(){
 
     fall();
 
-  },1200);
+  },1800);
 }
