@@ -89,51 +89,55 @@ game.appendChild(timer);
 
   function start(e){
 
-    e.preventDefault();
+  e.preventDefault();
 
-    moving = false;
+  if(holding) return;
 
-    holding = true;
+  moving = false;
 
-    seconds = 0;
+  holding = true;
 
-    clearInterval(interval);
+  seconds = 0;
 
-    interval = setInterval(() => {
+  timer.innerHTML = "0";
 
-      if(!holding){
+  clearInterval(interval);
 
-        clearInterval(interval);
+  interval = setInterval(() => {
 
-        moving = true;
+    if(!holding){
 
-        return;
-      }
+      clearInterval(interval);
 
-      seconds++;
-
-      timer.innerHTML = seconds;
+      moving = true;
 
       timer.innerHTML = "0";
 
-      if(seconds >= 5){
+      return;
+    }
 
-        clearInterval(interval);
+    seconds++;
 
-        sessionStorage.setItem(
-          "heart_1",
-          "true"
-        );
-        
-        timer.remove();
-        
-        heart.remove();
+    timer.innerHTML = seconds;
 
-        back.style.display =
-          "block";
-      }
+    if(seconds >= 5){
 
-    },1000);
+      clearInterval(interval);
+
+      sessionStorage.setItem(
+        "heart_1",
+        "true"
+      );
+
+      timer.remove();
+
+      heart.remove();
+
+      back.style.display =
+        "block";
+    }
+
+  },1000);
   }
 
   function stop(){
