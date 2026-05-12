@@ -11,12 +11,13 @@ function startPhase2(){
     );
 
   const big =
-    document.createElement("div");
+  document.createElement("img");
 
-  big.className =
-    "big-heart";
+big.className =
+  "big-heart";
 
-  big.innerHTML = "🤍";
+big.src =
+  "./img/photo2.jpg";
 
   game.appendChild(big);
 
@@ -144,10 +145,11 @@ let vy =
 
           collected++;
 
-          big.innerHTML = "❤️";
+          const gray =
+  100 - (collected * 10);
 
-          big.style.opacity =
-            0.2 + (collected / 10);
+big.style.filter =
+  `grayscale(${gray}%)`;
 
           if(collected >= 10){
 
