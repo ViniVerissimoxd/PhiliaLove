@@ -36,21 +36,24 @@ function startPhase2(){
 
     let x =
       Math.random() *
-      (window.innerWidth - 50);
+      (window.innerWidth - 60);
 
     let y =
       Math.random() *
-      (window.innerHeight - 50);
+      (window.innerHeight - 60);
 
     let vx =
-      (Math.random() * 6) + 3;
+      (Math.random() * 4) + 2;
 
     let vy =
-      (Math.random() * 6) + 3;
+      (Math.random() * 4) + 2;
 
     let dragging = false;
 
     function animate(){
+
+      const size =
+        small.offsetWidth;
 
       if(!dragging){
 
@@ -59,14 +62,14 @@ function startPhase2(){
 
         if(
           x <= 0 ||
-          x >= window.innerWidth - 40
+          x + size >= window.innerWidth
         ){
           vx *= -1;
         }
 
         if(
           y <= 0 ||
-          y >= window.innerHeight - 40
+          y + size >= window.innerHeight
         ){
           vy *= -1;
         }
@@ -87,21 +90,29 @@ function startPhase2(){
 
     small.addEventListener(
       "touchstart",
-      () => {
+      e => {
+
+        e.preventDefault();
 
         dragging = true;
-      }
+      },
+      { passive:false }
     );
 
     small.addEventListener(
       "touchmove",
       e => {
 
+        e.preventDefault();
+
         const t =
           e.touches[0];
 
-        x = t.clientX;
-        y = t.clientY;
+        x =
+          t.clientX - 20;
+
+        y =
+          t.clientY - 20;
 
         small.style.left =
           x + "px";
@@ -129,7 +140,7 @@ function startPhase2(){
           big.innerHTML = "❤️";
 
           big.style.opacity =
-            collected / 10;
+            0.2 + (collected / 10);
 
           if(collected >= 10){
 
@@ -144,7 +155,8 @@ function startPhase2(){
               "block";
           }
         }
-      }
+      },
+      { passive:false }
     );
 
     small.addEventListener(
