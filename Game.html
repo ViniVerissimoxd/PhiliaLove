@@ -1,25 +1,36 @@
-const params =
-  new URLSearchParams(
-    window.location.search
-  );
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-const phase =
-  params.get("heart");
+<head>
 
-if(phase === "1"){
+  <meta charset="UTF-8">
 
-  startPhase1();
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-}
+  <title>Minigame</title>
 
-if(phase === "2"){
+  <link rel="stylesheet"
+        href="./css/style.css">
 
-  startPhase2();
+</head>
 
-}
+<body class="game-body">
 
-if(phase === "3"){
+  <div id="gameContainer"></div>
 
-  startPhase3();
+  <a href="./index.html"
+     id="backLink">
 
-}
+     Voltar
+
+  </a>
+
+  <script src="./js/fase1.js"></script>
+  <script src="./js/Fase2.js"></script>
+  <script src="./js/Fase3.js"></script>
+
+  <script src="./js/game.js"></script>
+
+</body>
+</html>
