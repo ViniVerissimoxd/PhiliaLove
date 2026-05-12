@@ -43,17 +43,17 @@ function startPhase2(){
       (window.innerHeight - 60);
 
     let speed =
-      (Math.random() * 8) + 2;
+  (Math.random() * 10) + 2;
 
-    let vx =
-      Math.random() > 0.5
-      ? speed
-      : -speed;
+let vx =
+  Math.random() > 0.5
+  ? speed
+  : -speed;
 
-    let vy =
-      Math.random() > 0.5
-      ? speed
-      : -speed;
+let vy =
+  Math.random() > 0.5
+  ? speed
+  : -speed;
 
     let dragging = false;
 
@@ -67,8 +67,6 @@ function startPhase2(){
         x += vx;
         y += vy;
 
-        /* BORDAS */
-
         if(
           x <= 0 ||
           x + size >= window.innerWidth
@@ -81,33 +79,6 @@ function startPhase2(){
           y + size >= window.innerHeight
         ){
           vy *= -1;
-        }
-
-        /* COLISÃO COM CORAÇÃO GRANDE */
-
-        const futureRect = {
-
-          left:x,
-          right:x + size,
-          top:y,
-          bottom:y + size
-        };
-
-        const bigRect =
-          big.getBoundingClientRect();
-
-        if(
-          futureRect.left < bigRect.right &&
-          futureRect.right > bigRect.left &&
-          futureRect.top < bigRect.bottom &&
-          futureRect.bottom > bigRect.top
-        ){
-
-          vx *= -1;
-          vy *= -1;
-
-          x += vx * 2;
-          y += vy * 2;
         }
 
         small.style.left =
@@ -144,8 +115,11 @@ function startPhase2(){
         const t =
           e.touches[0];
 
-        x = t.clientX - 20;
-        y = t.clientY - 20;
+        x =
+          t.clientX - 20;
+
+        y =
+          t.clientY - 20;
 
         small.style.left =
           x + "px";
