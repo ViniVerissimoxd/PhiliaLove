@@ -85,8 +85,7 @@ if(
   }
 
   player.style.filter =
-    `grayscale(${100 - progress * 10}%)
-     drop-shadow(0 0 ${progress * 3}px lime)`;
+    grayscale(${100 - progress * 10}%);
 
   player.style.transform =
     `scale(${1 + progress/20})`;
