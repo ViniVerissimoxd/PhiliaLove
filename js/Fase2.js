@@ -42,11 +42,18 @@ function startPhase2(){
       Math.random() *
       (window.innerHeight - 60);
 
-    let vx =
-      (Math.random() * 4) + 2;
+    let speed =
+  (Math.random() * 10) + 2;
 
-    let vy =
-      (Math.random() * 4) + 2;
+let vx =
+  Math.random() > 0.5
+  ? speed
+  : -speed;
+
+let vy =
+  Math.random() > 0.5
+  ? speed
+  : -speed;
 
     let dragging = false;
 
