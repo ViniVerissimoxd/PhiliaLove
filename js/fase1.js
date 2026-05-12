@@ -10,6 +10,15 @@ function startPhase1(){
       "backLink"
     );
 
+  const timer =
+  document.createElement("div");
+
+timer.id = "timer";
+
+timer.innerHTML = "0";
+
+game.appendChild(timer);
+
   const heart =
     document.createElement("div");
 
@@ -103,6 +112,10 @@ function startPhase1(){
 
       seconds++;
 
+      timer.innerHTML = seconds;
+
+      timer.innerHTML = "0";
+
       if(seconds >= 5){
 
         clearInterval(interval);
@@ -111,7 +124,9 @@ function startPhase1(){
           "heart_1",
           "true"
         );
-
+        
+        timer.remove();
+        
         heart.remove();
 
         back.style.display =
