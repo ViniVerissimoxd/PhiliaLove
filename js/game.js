@@ -3,17 +3,23 @@ const params =
     window.location.search
   );
 
-const heartId =
+const phase =
   params.get("heart");
 
-if(heartId === "1"){
+if(phase === "1"){
+
   startPhase1();
+
 }
 
-if(heartId === "2"){
+if(phase === "2"){
+
   startPhase2();
+
 }
 
-if(heartId === "3"){
+if(phase === "3"){
+
   startPhase3();
+
 }
