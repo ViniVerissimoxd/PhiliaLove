@@ -13,9 +13,11 @@ function startPhase3(){
   const player =
     document.createElement("div");
 
-  player.id = "playerHeart";
+  player.id =
+    "playerHeart";
 
-  player.innerHTML = "❤️";
+  player.innerHTML =
+    "❤️";
 
   game.appendChild(player);
 
@@ -33,7 +35,7 @@ function startPhase3(){
   player.style.top =
     py + "px";
 
-  /* MOVER */
+  /* MOVIMENTO */
 
   player.addEventListener(
     "touchmove",
@@ -44,8 +46,11 @@ function startPhase3(){
       const t =
         e.touches[0];
 
-      px = t.clientX - 30;
-      py = t.clientY - 30;
+      px =
+        t.clientX - 30;
+
+      py =
+        t.clientY - 30;
 
       player.style.left =
         px + "px";
@@ -66,7 +71,8 @@ function startPhase3(){
     obstacle.className =
       "obstacle";
 
-    obstacle.innerHTML = "🖤";
+    obstacle.innerHTML =
+      "🖤";
 
     game.appendChild(obstacle);
 
@@ -79,7 +85,7 @@ function startPhase3(){
     obstacle.style.left =
       x + "px";
 
-    function fall(){
+    function animate(){
 
       y += 4;
 
@@ -110,25 +116,22 @@ function startPhase3(){
         player.style.filter =
           `grayscale(${100 - progress * 10}%)`;
 
-        player.style.transform =
-          `scale(${1 + progress/20})`;
+        return;
+      }
+
+      if(y > window.innerHeight){
+
+        obstacle.remove();
 
         return;
       }
 
-      if(y < window.innerHeight){
-
-        requestAnimationFrame(
-          fall
-        );
-
-      }else{
-
-        obstacle.remove();
-      }
+      requestAnimationFrame(
+        animate
+      );
     }
 
-    fall();
+    animate();
 
   },1800);
 
@@ -142,7 +145,8 @@ function startPhase3(){
     broccoli.className =
       "broccoli";
 
-    broccoli.innerHTML = "🥦";
+    broccoli.innerHTML =
+      "🥦";
 
     game.appendChild(broccoli);
 
@@ -155,7 +159,7 @@ function startPhase3(){
     broccoli.style.left =
       x + "px";
 
-    function fall(){
+    function animate(){
 
       y += 3;
 
@@ -186,9 +190,6 @@ function startPhase3(){
         player.style.filter =
           `grayscale(${100 - progress * 10}%)`;
 
-        player.style.transform =
-          `scale(${1 + progress/20})`;
-
         if(progress >= 10){
 
           sessionStorage.setItem(
@@ -205,19 +206,19 @@ function startPhase3(){
         return;
       }
 
-      if(y < window.innerHeight){
-
-        requestAnimationFrame(
-          fall
-        );
-
-      }else{
+      if(y > window.innerHeight){
 
         broccoli.remove();
+
+        return;
       }
+
+      requestAnimationFrame(
+        animate
+      );
     }
 
-    fall();
+    animate();
 
   },2500);
 }
