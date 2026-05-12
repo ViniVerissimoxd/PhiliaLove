@@ -140,14 +140,38 @@ let vy =
           r1.bottom > r2.top
         ){
 
-          small.remove();
+          dragging = false;
 
-          collected++;
+small.style.position = "absolute";
 
-          big.innerHTML = "❤️";
+const angle =
+  Math.random() * Math.PI * 2;
 
-          big.style.opacity =
-            0.2 + (collected / 10);
+const radius = 70;
+
+const centerX =
+  window.innerWidth / 2;
+
+const centerY =
+  window.innerHeight / 2;
+
+small.style.left =
+  (centerX + Math.cos(angle) * radius)
+  + "px";
+
+small.style.top =
+  (centerY + Math.sin(angle) * radius)
+  + "px";
+
+small.style.pointerEvents =
+  "none";
+
+collected++;
+
+big.innerHTML = "❤️";
+
+big.style.opacity =
+  0.2 + (collected / 10);
 
           if(collected >= 10){
 
