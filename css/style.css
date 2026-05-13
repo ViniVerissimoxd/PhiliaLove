@@ -316,6 +316,8 @@ body{
 
   position:relative;
 
+  width:220px;
+
   display:flex;
 
   justify-content:center;
@@ -327,9 +329,9 @@ body{
 
   position:absolute;
 
-  width:100%;
+  inset:0;
 
-  height:100%;
+  z-index:20;
 
   pointer-events:none;
 }
@@ -338,35 +340,33 @@ body{
 
   position:absolute;
 
-  width:140%;
+  width:150%;
 
-  height:12px;
+  height:14px;
+
+  left:-25%;
+
+  top:50%;
+
+  border-radius:20px;
 
   background:
     repeating-linear-gradient(
       90deg,
-      silver 0 20px,
-      #777 20px 40px
+      #bbb 0 18px,
+      #666 18px 36px
     );
-
-  border-radius:20px;
-
-  left:-20%;
-
-  top:50%;
 
   box-shadow:
     0 0 10px #aaa;
 }
 
-/* diagonal 1 */
 .chain1{
 
   transform:
     rotate(35deg);
 }
 
-/* diagonal 2 */
 .chain2{
 
   transform:
