@@ -1,129 +1,178 @@
-window.addEventListener("load", () => {
+const nav =
+  performance
+    .getEntriesByType(
+      "navigation"
+    )[0];
 
-  const params =
-    new URLSearchParams(
-      window.location.search
+if(nav && nav.type === "reload"){
+
+  sessionStorage.clear();
+}
+
+function update(){
+
+  const h1 =
+    sessionStorage.getItem(
+      "heart_1"
     );
 
-  const phase =
-    params.get("heart");
-
-  const title =
-    document.getElementById(
-      "phaseTitle"
+  const h2 =
+    sessionStorage.getItem(
+      "heart_2"
     );
 
-  const text =
-    document.getElementById(
-      "phaseText"
+  const h3 =
+    sessionStorage.getItem(
+      "heart_3"
     );
 
-  const button =
-    document.getElementById(
-      "startButton"
-    );
+  if(h1){
 
-  const intro =
-    document.getElementById(
-      "introScreen"
-    );
+    document
+      .getElementById("c1")
+      .innerHTML = "❤️";
 
-  const game =
-    document.getElementById(
-      "gameContainer"
-    );
-
-  const music =
-    document.getElementById(
-      "phaseMusic"
-    );
-
-  game.style.display = "none";
-
-  /* FASE 1 */
-
-  if(phase === "1"){
-
-    if(music){
-      music.src =
-        "./music/fase1-song.mp3";
-    }
-
-    title.innerHTML =
-      "Para você que sempre me acalmou";
-
-    text.innerHTML =
-      "Segure o coração desesperado.";
+    document
+      .getElementById("photo1")
+      .classList.add(
+        "completed"
+      );
   }
 
-  /* FASE 2 */
+  if(h2){
 
-  if(phase === "2"){
+    document
+      .getElementById("c2")
+      .innerHTML = "❤️";
 
-    if(music){
-      music.src =
-        "./music/fase2-song.mp3";
-    }
-
-    title.innerHTML =
-      "Para minha artista preferida";
-
-    text.innerHTML =
-      "Arraste as aquarelas fugitivas para pintar a imagem.";
+    document
+      .getElementById("photo2")
+      .classList.add(
+        "completed"
+      );
   }
 
-  /* FASE 3 */
+  if(h3){
 
-  if(phase === "3"){
+    document
+      .getElementById("c3")
+      .innerHTML = "❤️";
 
-    if(music){
-      music.src =
-        "./music/fase3-song.mp3";
-    }
-
-    title.innerHTML =
-      "Hora do lanche!";
-
-    text.innerHTML =
-      "Desvie do alimento que não gosta e pegue o que gosta.";
+    document
+      .getElementById("photo3")
+      .classList.add(
+        "completed"
+      );
   }
 
-  /* BOTÃO */
+  if(h1 && h2 && h3){
 
-  button.onclick = () => {
+    document
+      .getElementById("chains")
+      .style.display = "none";
 
-    intro.style.display =
-      "none";
+    const finalPhoto =
+      document.getElementById(
+        "finalPhoto"
+      );
 
-    game.style.display =
-      "block";
+    finalPhoto.style.filter =
+      "grayscale(0%)";
+
+    finalPhoto.style.opacity =
+      "1";
+
+    finalPhoto.style.cursor =
+      "pointer";
+
+    finalPhoto.onclick = () => {
+
+      window.location.href =
+        "./final.html";
+    };
+  }
+}
+
+update();
+
+/* MÚSICA MENU */
+
+document.addEventListener(
+  "click",
+  () => {
+
+    const music =
+      document.getElementById(
+        "bgMusic"
+      );
 
     if(music){
 
       music.play()
         .catch(() => {});
     }
+  },
+  { once:true }
+);
 
-    if(
-      phase === "1" &&
-      typeof startPhase1 === "function"
-    ){
-      startPhase1();
+/* CHUVA FINAL */
+
+window.addEventListener(
+  "pageshow",
+  () => {
+
+    const heartsContainer =
+      document.querySelector(
+        ".final-hearts"
+      );
+
+    if(!heartsContainer) return;
+
+    if(window.heartsStarted)
+      return;
+
+    window.heartsStarted =
+      true;
+
+    function createHeart(){
+
+      const heart =
+        document.createElement(
+          "div"
+        );
+
+      heart.classList.add(
+        "heart"
+      );
+
+      heart.innerText =
+        "❤️";
+
+      heart.style.left =
+        Math.random() * 100 +
+        "vw";
+
+      heart.style.animationDuration =
+        (3 + Math.random() * 3)
+        + "s";
+
+      heart.style.fontSize =
+        (12 + Math.random() * 20)
+        + "px";
+
+      heartsContainer
+        .appendChild(heart);
+
+      setTimeout(() => {
+
+        heart.remove();
+
+      }, 6000);
     }
 
-    if(
-      phase === "2" &&
-      typeof startPhase2 === "function"
-    ){
-      startPhase2();
-    }
-
-    if(
-      phase === "3" &&
-      typeof startPhase3 === "function"
-    ){
-      startPhase3();
-    }
-  };
-
-});
+    setInterval(
+      createHeart,
+      200
+    );
+  }
+);
