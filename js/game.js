@@ -40,7 +40,7 @@ game.style.display = "none";
 if(phase === "1"){
 
   title.innerHTML =
-    "Para você que sempre me acalmou";
+    "Para você que sempre me acalmou. ❤️🥹";
 
   text.innerHTML =
     "Segure o coração desesperado.";
@@ -50,7 +50,7 @@ if(phase === "1"){
 if(phase === "2"){
 
   title.innerHTML =
-    "Para minha artista preferida";
+    "Para minha artista preferida.👩‍🎨🤩";
 
   text.innerHTML =
     "Arraste as aquarelas fugitivas para pintar a imagem.";
@@ -60,7 +60,7 @@ if(phase === "2"){
 if(phase === "3"){
 
   title.innerHTML =
-    "Hora do lanche!";
+    "Hora do lanche!🥳😋";
 
   text.innerHTML =
     "Desvie do alimento que não gosta e pegue o que gosta.";
