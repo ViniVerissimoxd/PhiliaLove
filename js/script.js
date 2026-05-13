@@ -19,11 +19,19 @@ function update(){
   if(h1){
 
   document
+    .getElementById("c1")
+    .innerHTML = "❤️";
+
+  document
     .getElementById("photo1")
     .classList.add("completed");
-}
+  }
 
 if(h2){
+
+  document
+    .getElementById("c2")
+    .innerHTML = "❤️";
 
   document
     .getElementById("photo2")
@@ -31,6 +39,10 @@ if(h2){
 }
 
 if(h3){
+
+  document
+    .getElementById("c3")
+    .innerHTML = "❤️";
 
   document
     .getElementById("photo3")
