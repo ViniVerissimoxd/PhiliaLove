@@ -1,134 +1,111 @@
-const nav =
-  performance.getEntriesByType("navigation")[0];
+const params =
+  new URLSearchParams(
+    window.location.search
+  );
 
-if(nav && nav.type === "reload"){
-  sessionStorage.clear();
+const phase =
+  params.get("heart");
+
+const title =
+  document.getElementById(
+    "phaseTitle"
+  );
+
+const text =
+  document.getElementById(
+    "phaseText"
+  );
+
+const button =
+  document.getElementById(
+    "startButton"
+  );
+
+const intro =
+  document.getElementById(
+    "introScreen"
+  );
+
+const game =
+  document.getElementById(
+    "gameContainer"
+  );
+
+const music =
+  document.getElementById(
+    "phaseMusic"
+  );
+
+/* ESCONDER GAME */
+
+game.style.display = "none";
+
+/* FASE 1 */
+
+if(phase === "1"){
+
+  music.src =
+    "./music/fase1-song.mp3";
+
+  title.innerHTML =
+    "Para você que sempre me acalmou";
+
+  text.innerHTML =
+    "Segure o coração desesperado.";
 }
 
-function update(){
+/* FASE 2 */
 
-  const h1 =
-    sessionStorage.getItem("heart_1");
+if(phase === "2"){
 
-  const h2 =
-    sessionStorage.getItem("heart_2");
+  music.src =
+    "./music/fase2.mp3";
 
-  const h3 =
-    sessionStorage.getItem("heart_3");
+  title.innerHTML =
+    "Para minha artista preferida";
 
-  if(h1){
-
-  document
-    .getElementById("c1")
-    .innerHTML = "❤️";
-
-  document
-    .getElementById("photo1")
-    .classList.add("completed");
-  }
-
-if(h2){
-
-  document
-    .getElementById("c2")
-    .innerHTML = "❤️";
-
-  document
-    .getElementById("photo2")
-    .classList.add("completed");
+  text.innerHTML =
+    "Arraste as aquarelas fugitivas para pintar a imagem.";
 }
 
-if(h3){
+/* FASE 3 */
 
-  document
-    .getElementById("c3")
-    .innerHTML = "❤️";
+if(phase === "3"){
 
-  document
-    .getElementById("photo3")
-    .classList.add("completed");
+  music.src =
+    "./music/fase3-song.mp3";
+
+  title.innerHTML =
+    "Hora do lanche!";
+
+  text.innerHTML =
+    "Desvie do alimento que não gosta e pegue o que gosta.";
 }
 
-  if(h1 && h2 && h3){
+/* COMEÇAR */
 
-    document
-  .getElementById("chains")
-  .style.display = "none";
-
-    const finalPhoto =
-      document.getElementById("finalPhoto");
-
-    finalPhoto.style.filter =
-      "grayscale(0%)";
-
-    finalPhoto.style.opacity = "1";
-
-    finalPhoto.style.cursor = "pointer";
-
-    finalPhoto.onclick = () => {
-
-  window.location.href =
-    "./final.html";
-
-};
-  }
-}
-
-update();
-
-window.addEventListener("pageshow", () => {
-
-  const heartsContainer =
-    document.querySelector(".final-hearts");
-
-  if (!heartsContainer) return;
-
-  // evita criar vários intervalos
-  if (window.heartsStarted) return;
-  window.heartsStarted = true;
-
-  function createHeart() {
-
-    const heart =
-      document.createElement("div");
-
-    heart.classList.add("heart");
-
-    heart.innerText = "❤️";
-
-    heart.style.left =
-      Math.random() * 100 + "vw";
-
-    heart.style.animationDuration =
-      (3 + Math.random() * 3) + "s";
-
-    heart.style.fontSize =
-      (12 + Math.random() * 20) + "px";
-
-    heartsContainer.appendChild(heart);
-
-    setTimeout(() => {
-      heart.remove();
-    }, 6000);
-  }
-
-  setInterval(createHeart, 200);
-});
-
-document.addEventListener(
+button.addEventListener(
   "click",
   () => {
 
-    const music =
-      document.getElementById(
-        "bgMusic"
-      );
+    intro.style.display =
+      "none";
 
-    if(music){
+    game.style.display =
+      "block";
 
-      music.play();
+    music.play();
+
+    if(phase === "1"){
+      startPhase1();
     }
 
-  },
-  { once:true }
+    if(phase === "2"){
+      startPhase2();
+    }
+
+    if(phase === "3"){
+      startPhase3();
+    }
+  }
 );
