@@ -345,3 +345,67 @@ body{
 
   opacity:.95;
 }
+
+/* INTRO */
+
+#introScreen{
+
+  position:absolute;
+
+  inset:0;
+
+  background:black;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:center;
+
+  align-items:center;
+
+  text-align:center;
+
+  padding:30px;
+
+  z-index:100;
+}
+
+#phaseTitle{
+
+  color:white;
+
+  font-size:38px;
+
+  margin-bottom:25px;
+}
+
+#phaseText{
+
+  color:#ddd;
+
+  font-size:24px;
+
+  max-width:500px;
+
+  line-height:1.5;
+
+  margin-bottom:40px;
+}
+
+#startButton{
+
+  padding:18px 45px;
+
+  border:none;
+
+  border-radius:20px;
+
+  font-size:24px;
+
+  background:white;
+
+  color:black;
+
+  font-weight:bold;
+}
