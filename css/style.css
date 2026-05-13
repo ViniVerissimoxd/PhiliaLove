@@ -329,46 +329,15 @@ body{
 
   position:absolute;
 
-  inset:0;
+  width:120%;
+
+  left:-10%;
+
+  top:-5%;
 
   z-index:20;
 
   pointer-events:none;
-}
 
-.chain{
-
-  position:absolute;
-
-  width:150%;
-
-  height:14px;
-
-  left:-25%;
-
-  top:50%;
-
-  border-radius:20px;
-
-  background:
-    repeating-linear-gradient(
-      90deg,
-      #bbb 0 18px,
-      #666 18px 36px
-    );
-
-  box-shadow:
-    0 0 10px #aaa;
-}
-
-.chain1{
-
-  transform:
-    rotate(35deg);
-}
-
-.chain2{
-
-  transform:
-    rotate(-35deg);
+  opacity:.9;
 }
