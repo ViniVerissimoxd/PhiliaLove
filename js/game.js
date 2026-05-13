@@ -6,6 +6,11 @@ const params =
 const phase =
   params.get("heart");
 
+const music =
+  document.getElementById(
+    "phaseMusic"
+  );
+
 const title =
   document.getElementById(
     "phaseTitle"
