@@ -78,7 +78,7 @@ py = window.innerHeight * 0.7;
       "obstacle";
 
     obstacle.innerHTML =
-      "🖤";
+      "🥥";
 
     game.appendChild(obstacle);
 
