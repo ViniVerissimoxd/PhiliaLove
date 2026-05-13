@@ -95,9 +95,9 @@ function update(){
 
 update();
 
-/* MÚSICA MENU */
+/* MÚSICA */
 
-document.addEventListener(
+window.addEventListener(
   "click",
   () => {
 
