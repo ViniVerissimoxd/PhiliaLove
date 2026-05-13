@@ -71,9 +71,11 @@ window.addEventListener(
   update
 );
 
-const heartsContainer = document.querySelector(".final-hearts");
+document.addEventListener("DOMContentLoaded", () => {
 
-if (heartsContainer) {
+  const heartsContainer = document.querySelector(".final-hearts");
+
+  if (!heartsContainer) return;
 
   function createHeart() {
     const heart = document.createElement("div");
@@ -92,4 +94,4 @@ if (heartsContainer) {
   }
 
   setInterval(createHeart, 200);
-}
+});
