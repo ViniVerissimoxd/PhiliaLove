@@ -11,13 +11,16 @@ function startPhase2(){
     );
 
   const big =
-  document.createElement("img");
+    document.createElement("img");
 
-big.className =
-  "big-heart";
+  big.id =
+    "centerPhoto";
 
-big.src =
-  "./img/photo2.jpg";
+  big.src =
+    "./img/photo2.jpg";
+
+  big.style.position =
+    "absolute";
 
   game.appendChild(big);
 
@@ -29,9 +32,12 @@ big.src =
       document.createElement("div");
 
     small.className =
-      "small-heart";
+      "smallHeart";
 
     small.innerHTML = "🎨";
+
+    small.style.position =
+      "absolute";
 
     game.appendChild(small);
 
@@ -44,17 +50,17 @@ big.src =
       (window.innerHeight - 60);
 
     let speed =
-  (Math.random() * 10) + 2;
+      (Math.random() * 10) + 2;
 
-let vx =
-  Math.random() > 0.5
-  ? speed
-  : -speed;
+    let vx =
+      Math.random() > 0.5
+      ? speed
+      : -speed;
 
-let vy =
-  Math.random() > 0.5
-  ? speed
-  : -speed;
+    let vy =
+      Math.random() > 0.5
+      ? speed
+      : -speed;
 
     let dragging = false;
 
@@ -146,10 +152,10 @@ let vy =
           collected++;
 
           const gray =
-  100 - (collected * 10);
+            100 - (collected * 10);
 
-big.style.filter =
-  `grayscale(${gray}%)`;
+          big.style.filter =
+            `grayscale(${gray}%)`;
 
           if(collected >= 10){
 
