@@ -63,7 +63,7 @@ window.onload = () => {
       "Arraste as aquarelas fugitivas para pintar a imagem.";
 
     music.src =
-      "./music/fase2-song.mp3";
+      "./music/fase2.mp3";
   }
 
   if(phase === "3"){
