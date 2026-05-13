@@ -329,15 +329,19 @@ body{
 
   position:absolute;
 
-  width:120%;
+  width:100%;
 
-  left:-10%;
+  height:100%;
 
-  top:-5%;
+  left:0;
+
+  top:0;
+
+  object-fit:cover;
 
   z-index:20;
 
   pointer-events:none;
 
-  opacity:.9;
+  opacity:.95;
 }
