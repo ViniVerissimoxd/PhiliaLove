@@ -327,12 +327,48 @@ body{
 
   position:absolute;
 
-  font-size:70px;
+  width:100%;
 
-  z-index:10;
-
-  text-shadow:
-    0 0 10px white;
+  height:100%;
 
   pointer-events:none;
+}
+
+.chain{
+
+  position:absolute;
+
+  width:140%;
+
+  height:12px;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      silver 0 20px,
+      #777 20px 40px
+    );
+
+  border-radius:20px;
+
+  left:-20%;
+
+  top:50%;
+
+  box-shadow:
+    0 0 10px #aaa;
+}
+
+/* diagonal 1 */
+.chain1{
+
+  transform:
+    rotate(35deg);
+}
+
+/* diagonal 2 */
+.chain2{
+
+  transform:
+    rotate(-35deg);
 }
