@@ -11,21 +11,23 @@ function startPhase1(){
     );
 
   const timer =
-  document.createElement("div");
+    document.createElement("div");
 
-timer.id = "timer";
+  timer.id = "timer";
 
-timer.innerHTML = "0";
+  timer.innerHTML = "0";
 
-game.appendChild(timer);
+  game.appendChild(timer);
 
   const heart =
     document.createElement("div");
 
-  heart.className =
-    "phase1-heart";
+  heart.id = "heart";
 
   heart.innerHTML = "❤️";
+
+  heart.style.position =
+    "absolute";
 
   game.appendChild(heart);
 
@@ -89,58 +91,59 @@ game.appendChild(timer);
 
   function start(e){
 
-  e.preventDefault();
+    e.preventDefault();
 
-  if(holding) return;
+    if(holding) return;
 
-  moving = false;
+    moving = false;
 
-  holding = true;
+    holding = true;
 
-  seconds = 0;
+    seconds = 0;
 
-  timer.innerHTML = "0";
+    timer.innerHTML = "0";
 
-  clearInterval(interval);
+    clearInterval(interval);
 
-  interval = setInterval(() => {
+    interval = setInterval(() => {
 
-    if(!holding){
+      if(!holding){
 
-      clearInterval(interval);
+        clearInterval(interval);
 
-      moving = true;
+        moving = true;
 
-      timer.innerHTML = "0";
+        timer.innerHTML = "0";
 
-      return;
-    }
+        return;
+      }
 
-    seconds++;
+      seconds++;
 
-    timer.innerHTML = seconds;
+      timer.innerHTML = seconds;
 
-    if(seconds >= 5){
+      if(seconds >= 5){
 
-      clearInterval(interval);
+        clearInterval(interval);
 
-      sessionStorage.setItem(
-        "heart_1",
-        "true"
-      );
+        sessionStorage.setItem(
+          "heart_1",
+          "true"
+        );
 
-      timer.remove();
+        timer.remove();
 
-      heart.remove();
+        heart.remove();
 
-      back.style.display =
-        "block";
-    }
+        back.style.display =
+          "block";
+      }
 
-  },1000);
+    },1000);
   }
 
   function stop(){
+
     holding = false;
   }
 
