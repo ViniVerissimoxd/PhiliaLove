@@ -70,3 +70,26 @@ window.addEventListener(
   "pageshow",
   update
 );
+
+const heartsContainer = document.querySelector(".final-hearts");
+
+if (heartsContainer) {
+
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerText = "❤️";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+    heart.style.fontSize = (12 + Math.random() * 20) + "px";
+
+    heartsContainer.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 6000);
+  }
+
+  setInterval(createHeart, 200);
+}
