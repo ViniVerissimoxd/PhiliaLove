@@ -44,6 +44,9 @@ game.style.display = "none";
 
 if(phase === "1"){
 
+  music.src =
+  "./music/fase1-song.mp3";
+
   title.innerHTML =
     "Para você que sempre me acalmou. ❤️🥹";
 
@@ -54,6 +57,9 @@ if(phase === "1"){
 
 if(phase === "2"){
 
+  music.src =
+  "./music/fase2.mp3";
+
   title.innerHTML =
     "Para minha artista preferida. 👩‍🎨🤩";
 
@@ -63,6 +69,9 @@ if(phase === "2"){
 }
 
 if(phase === "3"){
+
+  music.src =
+  "./music/fase3-song.mp3";
 
   title.innerHTML =
     "Hora do lanche! 🥳😋";
@@ -77,6 +86,15 @@ if(phase === "3"){
 button.addEventListener(
   "click",
   () => {
+
+    button.addEventListener(
+  "click",
+  () => {
+
+    music.play();
+
+    intro.style.display =
+      "none";
 
     intro.style.display =
       "none";
