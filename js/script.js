@@ -18,30 +18,24 @@ function update(){
 
   if(h1){
 
-    document.getElementById("c1")
-      .innerHTML = "❤️";
+  document
+    .getElementById("photo1")
+    .classList.add("completed");
+}
 
-    document.querySelector("#photo1 img")
-      .style.filter = "grayscale(0%)";
-  }
+if(h2){
 
-  if(h2){
+  document
+    .getElementById("photo2")
+    .classList.add("completed");
+}
 
-    document.getElementById("c2")
-      .innerHTML = "❤️";
+if(h3){
 
-    document.querySelector("#photo2 img")
-      .style.filter = "grayscale(0%)";
-  }
-
-  if(h3){
-
-    document.getElementById("c3")
-      .innerHTML = "❤️";
-
-    document.querySelector("#photo3 img")
-      .style.filter = "grayscale(0%)";
-  }
+  document
+    .getElementById("photo3")
+    .classList.add("completed");
+}
 
   if(h1 && h2 && h3){
 
