@@ -66,25 +66,34 @@ function update(){
 
 update();
 
-window.addEventListener(
-  "pageshow",
-  update
-);
+window.addEventListener("pageshow", () => {
 
-document.addEventListener("DOMContentLoaded", () => {
-
-  const heartsContainer = document.querySelector(".final-hearts");
+  const heartsContainer =
+    document.querySelector(".final-hearts");
 
   if (!heartsContainer) return;
 
+  // evita criar vários intervalos
+  if (window.heartsStarted) return;
+  window.heartsStarted = true;
+
   function createHeart() {
-    const heart = document.createElement("div");
+
+    const heart =
+      document.createElement("div");
+
     heart.classList.add("heart");
+
     heart.innerText = "❤️";
 
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (3 + Math.random() * 3) + "s";
-    heart.style.fontSize = (12 + Math.random() * 20) + "px";
+    heart.style.left =
+      Math.random() * 100 + "vw";
+
+    heart.style.animationDuration =
+      (3 + Math.random() * 3) + "s";
+
+    heart.style.fontSize =
+      (12 + Math.random() * 20) + "px";
 
     heartsContainer.appendChild(heart);
 
