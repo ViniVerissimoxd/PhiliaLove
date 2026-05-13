@@ -39,6 +39,10 @@ if(h3){
 
   if(h1 && h2 && h3){
 
+    document
+  .getElementById("chains")
+  .style.display = "none";
+
     const finalPhoto =
       document.getElementById("finalPhoto");
 
