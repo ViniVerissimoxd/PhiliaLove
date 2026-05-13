@@ -351,9 +351,9 @@ body{
 
 .final-body{
 
-  width:100vw;
+  background:black;
 
-  height:100vh;
+  min-height:100vh;
 
   display:flex;
 
@@ -361,43 +361,51 @@ body{
 
   align-items:center;
 
+  padding:30px;
+
   text-align:center;
 
-  padding:20px;
-
-  overflow:hidden;
-
-  position:relative;
+  color:white;
 }
 
-.final-body h1{
+.final-container{
 
-  font-size:50px;
+  display:flex;
 
-  z-index:10;
+  flex-direction:column;
+
+  align-items:center;
+
+  gap:30px;
+
+  max-width:500px;
 }
 
-/* CHUVA DE CORAÇÕES */
+.final-image{
 
-.final-hearts{
+  width:220px;
 
-  position:absolute;
+  border-radius:20px;
 
-  inset:0;
-
-  overflow:hidden;
-
-  pointer-events:none;
+  border:3px solid white;
 }
 
-.heart{
+.final-container h1{
 
-  position:absolute;
+  font-size:38px;
 
-  top:-50px;
-
-  animation:fall linear forwards;
+  line-height:1.2;
 }
+
+.final-container p{
+
+  font-size:22px;
+
+  line-height:1.5;
+
+  opacity:.9;
+}
+
 
 @keyframes fall{
 
