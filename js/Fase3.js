@@ -19,6 +19,9 @@ function startPhase3(){
   player.innerHTML =
     "❤️";
 
+  player.style.filter =
+  "grayscale(100%)";
+
   game.appendChild(player);
 
   let progress = 0;
@@ -117,7 +120,7 @@ py = window.innerHeight * 0.7;
         }
 
         player.style.filter =
-          `grayscale(${100 - progress * 10}%)`;
+          `grayscale(${100 - (progress * 10)}%)`;
 
         return;
       }
@@ -191,7 +194,7 @@ py = window.innerHeight * 0.7;
         }
 
         player.style.filter =
-          `grayscale(${100 - progress * 10}%)`;
+          `grayscale(${100 - (progress * 10)}%)`;
 
         if(progress >= 10){
 
