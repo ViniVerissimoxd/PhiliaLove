@@ -1,92 +1,96 @@
-const params =
-  new URLSearchParams(
-    window.location.search
-  );
+window.addEventListener("load", () => {
 
-const phase =
-  params.get("heart");
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
 
-const title =
-  document.getElementById(
-    "phaseTitle"
-  );
+  const phase =
+    params.get("heart");
 
-const text =
-  document.getElementById(
-    "phaseText"
-  );
+  const title =
+    document.getElementById(
+      "phaseTitle"
+    );
 
-const button =
-  document.getElementById(
-    "startButton"
-  );
+  const text =
+    document.getElementById(
+      "phaseText"
+    );
 
-const intro =
-  document.getElementById(
-    "introScreen"
-  );
+  const button =
+    document.getElementById(
+      "startButton"
+    );
 
-const game =
-  document.getElementById(
-    "gameContainer"
-  );
+  const intro =
+    document.getElementById(
+      "introScreen"
+    );
 
-const music =
-  document.getElementById(
-    "phaseMusic"
-  );
+  const game =
+    document.getElementById(
+      "gameContainer"
+    );
 
-/* ESCONDER GAME */
+  const music =
+    document.getElementById(
+      "phaseMusic"
+    );
 
-game.style.display = "none";
+  game.style.display = "none";
 
-/* FASE 1 */
+  /* FASE 1 */
 
-if(phase === "1"){
+  if(phase === "1"){
 
-  music.src =
-    "./music/fase1-song.mp3";
+    if(music){
+      music.src =
+        "./music/fase1-song.mp3";
+    }
 
-  title.innerHTML =
-    "Para você que sempre me acalmou";
+    title.innerHTML =
+      "Para você que sempre me acalmou";
 
-  text.innerHTML =
-    "Segure o coração desesperado.";
-}
+    text.innerHTML =
+      "Segure o coração desesperado.";
+  }
 
-/* FASE 2 */
+  /* FASE 2 */
 
-if(phase === "2"){
+  if(phase === "2"){
 
-  music.src =
-    "./music/fase2.mp3";
+    if(music){
+      music.src =
+        "./music/fase2-song.mp3";
+    }
 
-  title.innerHTML =
-    "Para minha artista preferida";
+    title.innerHTML =
+      "Para minha artista preferida";
 
-  text.innerHTML =
-    "Arraste as aquarelas fugitivas para pintar a imagem.";
-}
+    text.innerHTML =
+      "Arraste as aquarelas fugitivas para pintar a imagem.";
+  }
 
-/* FASE 3 */
+  /* FASE 3 */
 
-if(phase === "3"){
+  if(phase === "3"){
 
-  music.src =
-    "./music/fase3-song.mp3";
+    if(music){
+      music.src =
+        "./music/fase3-song.mp3";
+    }
 
-  title.innerHTML =
-    "Hora do lanche!";
+    title.innerHTML =
+      "Hora do lanche!";
 
-  text.innerHTML =
-    "Desvie do alimento que não gosta e pegue o que gosta.";
-}
+    text.innerHTML =
+      "Desvie do alimento que não gosta e pegue o que gosta.";
+  }
 
-/* COMEÇAR */
+  /* BOTÃO */
 
-button.addEventListener(
-  "click",
-  () => {
+  button.onclick = () => {
 
     intro.style.display =
       "none";
@@ -94,18 +98,32 @@ button.addEventListener(
     game.style.display =
       "block";
 
-    music.play();
+    if(music){
 
-    if(phase === "1"){
+      music.play()
+        .catch(() => {});
+    }
+
+    if(
+      phase === "1" &&
+      typeof startPhase1 === "function"
+    ){
       startPhase1();
     }
 
-    if(phase === "2"){
+    if(
+      phase === "2" &&
+      typeof startPhase2 === "function"
+    ){
       startPhase2();
     }
 
-    if(phase === "3"){
+    if(
+      phase === "3" &&
+      typeof startPhase3 === "function"
+    ){
       startPhase3();
     }
-  }
-);
+  };
+
+});
