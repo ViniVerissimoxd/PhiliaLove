@@ -45,10 +45,10 @@ window.onload = () => {
   if(phase === "1"){
 
     title.innerHTML =
-      "Para você que sempre me acalmou. 🥹❤️";
+      "Para você que sempre me acompanha nos passeios. 🚗🤭";
 
     text.innerHTML =
-      "Segure o coração desesperado.";
+      "Segure o carro para pará-lo..";
 
     music.src =
       "./music/fase1-song.mp3";
