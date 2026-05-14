@@ -457,3 +457,52 @@ body{
 
   font-weight:bold;
 }
+
+#startScreen{
+
+  position:fixed;
+
+  top:0;
+  left:0;
+
+  width:100vw;
+  height:100vh;
+
+  background:black;
+
+  z-index:999999;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:center;
+
+  align-items:center;
+
+  gap:40px;
+}
+
+#startScreen h1{
+
+  color:white;
+
+  font-size:42px;
+
+  text-align:center;
+}
+
+#enterButton{
+
+  background:none;
+
+  border:none;
+
+  color:red;
+
+  font-size:38px;
+
+  font-weight:bold;
+
+  cursor:pointer;
+}
