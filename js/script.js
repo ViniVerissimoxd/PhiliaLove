@@ -98,7 +98,7 @@ update();
 /* MÚSICA */
 
 window.addEventListener(
-  "click",
+  "pageshow",
   () => {
 
     const music =
@@ -111,6 +111,5 @@ window.addEventListener(
       music.play()
         .catch(() => {});
     }
-  },
-  { once:true }
+  }
 );
