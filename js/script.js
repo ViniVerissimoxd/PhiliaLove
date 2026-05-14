@@ -124,36 +124,6 @@ const startScreen =
     "startScreen"
   );
 
-if(enterButton){
-
-  enterButton.onclick = () => {
-
-    const music =
-      document.getElementById(
-        "bgMusic"
-      );
-
-    if(music){
-
-      music.play()
-        .catch(() => {});
-    }
-
-    startScreen.style.display =
-      "none";
-  };
-}
-
-const enterButton =
-  document.getElementById(
-    "enterButton"
-  );
-
-const startScreen =
-  document.getElementById(
-    "startScreen"
-  );
-
 const bgMusic =
   document.getElementById(
     "bgMusic"
