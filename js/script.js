@@ -135,6 +135,22 @@ window.addEventListener(
         "bgMusic"
       );
 
+    if(
+  sessionStorage.getItem(
+    "entered"
+  )
+){
+
+  startScreen.style.display =
+    "none";
+
+  if(bgMusic){
+
+    bgMusic.play()
+      .catch(() => {});
+  }
+    }
+
     if(enterButton){
 
       enterButton.onclick =
