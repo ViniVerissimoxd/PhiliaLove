@@ -6,7 +6,17 @@ const nav =
 
 if(nav && nav.type === "reload"){
 
-  sessionStorage.clear();
+  sessionStorage.removeItem(
+  "heart_1"
+);
+
+sessionStorage.removeItem(
+  "heart_2"
+);
+
+sessionStorage.removeItem(
+  "heart_3"
+);
 }
 
 function update(){
