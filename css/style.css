@@ -477,7 +477,9 @@ body{
 
   text-align:center;
 
-  margin-top:-40px;
+  margin-top:-80px;
+
+  margin-bottom:0;
 }
 
 #preText{
@@ -501,20 +503,26 @@ body{
 
   height:240px;
 
+  margin-top:40px;
+
+  margin-bottom:40px;
+
   display:flex;
 
   justify-content:center;
 
   align-items:center;
 
-  margin-top:25px;
-
-  margin-bottom:25px;
+  flex-shrink:0;
 }
 
 #prePhoto{
 
-  width:100%;
+  width:240px;
+
+  height:240px;
+
+  object-fit:cover;
 
   border-radius:20px;
 
@@ -529,15 +537,19 @@ body{
 
   position:absolute;
 
-  width:92%;
+  width:240px;
 
-  height:92%;
+  height:240px;
 
-  object-fit:contain;
+  top:0;
+
+  left:0;
+
+  object-fit:cover;
 
   pointer-events:none;
 
-  z-index:5;
+  z-index:10;
 }
 
 #enterButton{
