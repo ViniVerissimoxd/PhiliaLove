@@ -143,3 +143,33 @@ if(enterButton){
       "none";
   };
 }
+
+const enterButton =
+  document.getElementById(
+    "enterButton"
+  );
+
+const startScreen =
+  document.getElementById(
+    "startScreen"
+  );
+
+const bgMusic =
+  document.getElementById(
+    "bgMusic"
+  );
+
+if(enterButton){
+
+  enterButton.onclick = () => {
+
+    if(bgMusic){
+
+      bgMusic.play()
+        .catch(() => {});
+    }
+
+    startScreen.style.display =
+      "none";
+  };
+}
