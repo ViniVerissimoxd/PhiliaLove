@@ -24,7 +24,7 @@ function startPhase1(){
 
   heart.id = "heart";
 
-  heart.innerHTML = "❤️";
+  heart.innerHTML = "🚗";
 
   heart.style.position =
     "absolute";
