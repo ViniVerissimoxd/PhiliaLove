@@ -442,13 +442,94 @@ body{
   gap:40px;
 }
 
-#startScreen h1{
+#startScreen{
+
+  position:fixed;
+
+  top:0;
+  left:0;
+
+  width:100vw;
+  height:100vh;
+
+  background:black;
+
+  z-index:999999;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:25px;
+
+  padding:20px;
+}
+
+#preTitle{
 
   color:white;
 
-  font-size:42px;
+  font-size:34px;
 
   text-align:center;
+
+  margin-top:-40px;
+}
+
+#preText{
+
+  color:#bbb;
+
+  font-size:18px;
+
+  text-align:center;
+
+  margin-top:-10px;
+}
+
+#prePhotoContainer{
+
+  position:relative;
+
+  width:220px;
+
+  height:220px;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+}
+
+#prePhoto{
+
+  width:100%;
+
+  border-radius:20px;
+
+  filter:grayscale(100%);
+
+  border:3px solid white;
+
+  opacity:.8;
+}
+
+#preChains{
+
+  position:absolute;
+
+  width:115%;
+
+  height:115%;
+
+  object-fit:contain;
+
+  pointer-events:none;
 }
 
 #enterButton{
@@ -459,9 +540,11 @@ body{
 
   color:red;
 
-  font-size:38px;
+  font-size:36px;
 
   font-weight:bold;
 
   cursor:pointer;
+
+  margin-top:10px;
 }
