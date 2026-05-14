@@ -152,7 +152,7 @@ py = window.innerHeight * 0.7;
       "broccoli";
 
     broccoli.innerHTML =
-      "🥦";
+      "🍇";
 
     game.appendChild(broccoli);
 
