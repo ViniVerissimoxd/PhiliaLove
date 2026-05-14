@@ -146,6 +146,11 @@ window.addEventListener(
             .catch(() => {});
         }
 
+          sessionStorage.setItem(
+  "entered",
+  "true"
+);
+          
         startScreen.style.display =
           "none";
       };
