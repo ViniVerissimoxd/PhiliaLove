@@ -114,32 +114,41 @@ window.addEventListener(
   }
 );
 
-const enterButton =
-  document.getElementById(
-    "enterButton"
-  );
+/* pre-menu */
 
-const startScreen =
-  document.getElementById(
-    "startScreen"
-  );
+window.addEventListener(
+  "load",
+  () => {
 
-const bgMusic =
-  document.getElementById(
-    "bgMusic"
-  );
+    const enterButton =
+      document.getElementById(
+        "enterButton"
+      );
 
-if(enterButton){
+    const startScreen =
+      document.getElementById(
+        "startScreen"
+      );
 
-  enterButton.onclick = () => {
+    const bgMusic =
+      document.getElementById(
+        "bgMusic"
+      );
 
-    if(bgMusic){
+    if(enterButton){
 
-      bgMusic.play()
-        .catch(() => {});
+      enterButton.onclick =
+        () => {
+
+        if(bgMusic){
+
+          bgMusic.play()
+            .catch(() => {});
+        }
+
+        startScreen.style.display =
+          "none";
+      };
     }
-
-    startScreen.style.display =
-      "none";
-  };
-}
+  }
+);
