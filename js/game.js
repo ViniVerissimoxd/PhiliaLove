@@ -48,7 +48,7 @@ window.onload = () => {
       "Para você que sempre me acompanha nos passeios. 🚗🤭";
 
     text.innerHTML =
-      "Segure o carro para pará-lo..";
+      "Segure o carro para que ele pare.";
 
     music.src =
       "./music/fase1-song.mp3";
